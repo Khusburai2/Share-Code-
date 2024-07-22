@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Share Content</title>
+    <style>
+        body {
+            background-color: lightslategrey; /* Light blue background */
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 100px; /* Increased padding */
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 400px; /* Increased width */
+            text-align: center;
+        }
+        .container h1 {
+            color: #007acc; /* Darker blue for headings */
+            margin-bottom: 30px;
+        }
+        .container button {
+            background-color: #007acc; /* Button color */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px; /* Added margin to separate from other content */
+        }
+        .container button:hover {
+            background-color: #005f99; /* Darker shade on hover */
+        }
+        .back-button {
+            background-color: #f0f0f0; /* Light gray background */
+            color: #007acc; /* Button text color */
+            border: 1px solid #007acc;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            text-decoration: none; /* Remove underline from link */
+            display: inline-block;
+            margin-top: 20px; /* Added margin to separate from other content */
+        }
+        .back-button:hover {
+            background-color: #e0e0e0; /* Slightly darker gray on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Shared Content</h1>
+        <p>Share this link: <a href="http://127.0.0.1:8000/share/{{ code }}/">http://127.0.0.1:8000/share/{{ code }}/</a></p>
+        <p> Code: {{ code }}</p>
+
+        {% if content.text %}
+            <p>{{ content.text }}</p>
+        {% endif %}
+
+        {% if content.file %}
+            <p>Download the file: <a href="{{ content.file.url }}">{{ content.file.name }}</a></p>
+        {% endif %}
+        
+        <a href="{% url 'create_content' %}" class="back-button">Back</a>
+    </div>
+</body>
+</html>

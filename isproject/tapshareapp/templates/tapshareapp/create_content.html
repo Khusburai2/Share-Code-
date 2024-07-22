@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Content</title>
+    <style>
+        body {
+            background-color: lightslategray; /* Light slate gray background */
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 40px; /* Reduced padding for better balance */
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 400px; /* Container width */
+            text-align: center;
+        }
+        .container h1 {
+            color: #007acc; /* Darker blue for headings */
+            margin-bottom: 20px;
+        }
+        .container button {
+            background-color: #007acc; /* Button color */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px; /* Added margin to separate from input fields */
+        }
+        .container button:hover {
+            background-color: #005f99; /* Darker shade on hover */
+        }
+        .container input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>SHARE CODE</h1>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Submit</button>
+        </form>
+        <form method="get" action="{% url 'share_content' %}">
+            <input type="text" name="code" placeholder="Enter code">
+            <button type="submit">SEARCH</button>
+        </form>
+    </div>
+</body>
+</html>
+
+
+
+
+
+
+
